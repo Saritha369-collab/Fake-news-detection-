@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fake News Detector</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='project.css') }}" />
+</head>
+<body>
+
+<!-- NAVIGATION BAR -->
+<nav class="navbar">
+    <div class="logo">Fake News Detector</div>
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#how">How it Works</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+</nav>
+
+<!-- HOME SECTION -->
+<section class="container" id="home">
+    <h1>📰 Fake News Detection</h1>
+    <p>Enter any news article below and let our ML model analyze whether it's FAKE or TRUE.</p>
+
+    <form method="POST">
+        <textarea name="article_text" placeholder="Paste the news article text here..."></textarea>
+        <button type="submit">🔍 Predict</button>
+    </form>
+
+    {% if prediction_result %}
+        {% if prediction_result.status == 'success' %}
+        <div class="result-box {% if prediction_result.label == 0 %}fake{% else %}true{% endif %}">
+            <h2>Prediction: <strong>{{ prediction_result.result }}</strong></h2>
+            <p>This article is classified as <strong>{{ prediction_result.result }}</strong>.</p>
+        </div>
+        {% elif prediction_result.status == 'error' %}
+        <div class="result-box error">
+            <h2>Error:</h2>
+            <p>{{ prediction_result.message }}</p>
+        </div>
+        {% endif %}
+    {% endif %}
+</section>
+
+<!-- HOW IT WORKS SECTION -->
+<section class="container" id="how">
+    <h1>⚙️ How It Works</h1>
+    <p>Our system uses Machine Learning to detect whether a news article is real or fake.</p>
+
+    <h3>🔸 Step-by-Step Process</h3>
+    <ul>
+        <li><strong>1.</strong> User enters a news article.</li>
+        <li><strong>2.</strong> The text is cleaned (lowercase, removing stopwords & symbols).</li>
+        <li><strong>3.</strong> TF-IDF converts text into numerical form.</li>
+        <li><strong>4.</strong> ML Model analyzes the pattern and predicts Fake or True.</li>
+        <li><strong>5.</strong> The result is shown instantly.</li>
+    </ul>
+
+    <h3>🧠 Technologies Used</h3>
+    <ul>
+        <li>Python</li>
+        <li>Flask (Backend Framework)</li>
+        <li>Scikit-Learn (Machine Learning)</li>
+        <li>TF‑IDF Vectorizer</li>
+        <li>HTML + CSS (Frontend UI)</li>
+    </ul>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="container" id="about">
+    <h1>👩‍💻 About This Project</h1>
+    <p>This Fake News Detection system helps identify misleading or false news articles using Machine Learning.</p>
+
+    <h3>📌 Features</h3>
+    <ul>
+        <li>✔ Instant Fake/True classification</li>
+        <li>✔ Clean and modern user interface</li>
+        <li>✔ High accuracy ML model</li>
+        <li>✔ Works with any news text</li>
+    </ul>
+
+    <h3>👤 Developer</h3>
+    <p>
+        Developed by: <strong>Your Name</strong><br />
+        Diploma in Computer Science — Government Polytechnic Anakapalli
+    </p>
+</section>
+
+</body>
+</html>

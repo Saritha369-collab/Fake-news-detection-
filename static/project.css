@@ -1,114 +1,182 @@
+/* =============================
+   GLOBAL STYLES
+============================= */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 20px;
-  background-color: #f0f2f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  color: #333;
-  }
-  
-  .container {
-  max-width: 800px;
-  width: 100%;
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  border: 1px solid #e0e0e0;
-  }
-  
-  h1 {
-  text-align: center;
-  color: #1a1a1a;
-  font-size: 2.5em;
-  margin-bottom: 0.5em;
-  }
-  
-  p {
-  text-align: center;
-  color: #666;
-  margin-bottom: 2em;
-  }
-  
-  form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  }
-  
-  textarea {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-sizing: border-box;
-  font-size: 1em;
-  min-height: 200px;
-  transition: border-color 0.3s ease;
-  }
-  
-  textarea:focus {
-  outline: none;
-  border-color: #007bff;
-  }
-  
-  button {
-  background-color: #007bff;
-  color: white;
-  padding: 15px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.1em;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-  }
-  
-  .result-box {
-  margin-top: 30px;
-  padding: 20px;
-  border-radius: 8px;
-  font-size: 1.1em;
-  text-align: center;
-  border-left: 5px solid;
-  animation: fadeIn 1s ease-in-out;
-  }
-  
-  .fake {
-  background-color: #f8d7da;
-  color: #721c24;
-  border-color: #dc3545;
-  }
-  
-  .true {
-  background-color: #d4edda;
-  color: #155724;
-  border-color: #28a745;
-  }
-  
-  .error {
-  background-color: #fff3cd;
-  color: #856404;
-  border-color: #ffc107;
-  }
-  
-  @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-  }
-  
-  @media (max-width: 600px) {
-  .container {
-  padding: 20px;
-  }
-  h1 {
-  font-size: 2em;
-  }
-  }
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #eef2f3, #cfd9df);
+    color: #333;
+    min-height: 100vh;
+}
+
+/* =============================
+   NAVBAR
+============================= */
+.navbar {
+    width: 100%;
+    background: #0d1b2a;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar h2 {
+    color: #e0e1dd;
+    margin: 0;
+    font-size: 1.6em;
+}
+
+.nav-links a {
+    color: #e0e1dd;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #00b4d8;
+}
+
+/* =============================
+   MAIN CONTAINER
+============================= */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    border: 1px solid #d9d9d9;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+h1 {
+    text-align: center;
+    color: #0d1b2a;
+    font-size: 2.7em;
+    margin-bottom: 0.5em;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+p {
+    text-align: center;
+    color: #555;
+    margin-bottom: 2em;
+    font-size: 1.1em;
+}
+
+/* =============================
+   FORM + TEXTAREA
+============================= */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+textarea {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid #bfc9d4;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 1.1em;
+    min-height: 220px;
+    transition: border-color 0.3s ease;
+    background-color: #f8f9fc;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #0077b6;
+    background-color: #ffffff;
+}
+
+button {
+    background: linear-gradient(135deg, #0077b6, #00b4d8);
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition: 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0, 119, 182, 0.3);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #0096c7, #48cae4);
+}
+
+/* =============================
+   RESULT BOXES
+============================= */
+.result-box {
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 12px;
+    font-size: 1.2em;
+    text-align: center;
+    border-left: 6px solid;
+    animation: slideUp 0.8s ease-out;
+}
+
+.fake {
+    background-color: #fdecea;
+    color: #b91c1c;
+    border-color: #dc2626;
+}
+
+.true {
+    background-color: #e8f5e9;
+    color: #1b5e20;
+    border-color: #2e7d32;
+}
+
+.error {
+    background-color: #fff8e1;
+    color: #b45309;
+    border-color: #facc15;
+}
+
+/* =============================
+   ANIMATIONS
+============================= */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================
+   RESPONSIVE DESIGN
+============================= */
+@media (max-width: 650px) {
+    .container {
+        padding: 25px;
+    }
+    h1 {
+        font-size: 2.2em;
+    }
+    .navbar h2 {
+        font-size: 1.3em;
+    }
+    .nav-links a {
+        font-size: 0.9em;
+    }
+}

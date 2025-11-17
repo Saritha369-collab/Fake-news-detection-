@@ -5,14 +5,14 @@ import sys
 import os
 
 # --- Import Preprocessing and Training Functions ---
-# Assuming the provided code is saved as 'model.py'
+# Assuming the provided  code is saved as 'model.py'
 # We need to import the specific functions and variables used for prediction
 try:
-    from model import preprocess_text
+    from model1 import preprocess_text
     # Note: We don't import train_and_save_model() to keep the web app clean, 
     # but we'll run it once to ensure the model and vectorizer exist.
 except ImportError:
-    print("❌ Error: Could not import 'preprocess_text' from 'model.py'. "
+    print(" Error: Could not import 'preprocess_text' from 'model.py'. "
           "Please ensure the file is named 'model.py' and is in the same directory.")
     sys.exit(1)
 
@@ -31,18 +31,18 @@ def load_model_and_vectorizer():
     try:
         MODEL = joblib.load('model.pkl')
         VECTORIZER = joblib.load('vectorizer.pkl')
-        print("✅ Model and Vectorizer loaded successfully.")
+        print(" Model and Vectorizer loaded successfully.")
         return True
     except FileNotFoundError:
-        print("⚠️ Warning: 'model.pkl' or 'vectorizer.pkl' not found.")
+        print("Warning: 'model.pkl' or 'vectorizer.pkl' not found.")
         print("Attempting to train the model now...")
         # Since the model wasn't found, try to train it
-        from model import train_and_save_model
+        from model1 import train_and_save_model
         if train_and_save_model():
             # If training was successful, try loading again
             return load_model_and_vectorizer()
         else:
-            print("❌ Critical Error: Training failed or data files are missing. Cannot run prediction.")
+            print("Critical Error: Training failed or data files are missing. Cannot run prediction.")
             return False
 
 
@@ -86,8 +86,8 @@ def index():
 if __name__ == '__main__':
     # Ensure the model and vectorizer are loaded before running the app
     if load_model_and_vectorizer():
-        print("🚀 Starting Flask app...")
+        print(" Starting Flask app...")
         # Running on a standard development port
         app.run(debug=True)
     else:
-        print("🛑 Application stopped due to critical error.")
+        print("Application stopped due to critical error.")
