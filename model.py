@@ -30,20 +30,20 @@ def preprocess_text(text):
     # Convert to lowercase
     text = text.lower()
     # Remove text in brackets
-    text = re.sub('\[.*?\]', '', text)
+    text = re.sub(r'\[.*?\]', '', text)
     # Remove non-alphanumeric characters and replace with space
-    text = re.sub("\\W", " ", text)
+    text = re.sub(r"\\W", " ", text)
     # Remove URLs
-    text = re.sub('https?://\S+|www\.\S+', '', text)
+    text = re.sub(r'https?://\S+|www\.\S+', '', text)
     # Remove HTML tags
-    text = re.sub('<.*?>+', '', text)
+    text = re.sub(r'<.*?>+', '', text)
     # Remove punctuation
     text = re.sub('[%s]' % re.escape(string.punctuation), '', text)
     # Remove newlines and multiple spaces
-    text = re.sub('\n', ' ', text)
-    text = re.sub('\s+', ' ', text).strip()
+    text = re.sub(r'\n', ' ', text)
+    text = re.sub(r'\s+', ' ', text).strip()
     # Remove words containing numbers
-    text = re.sub('\w*\d\w*', '', text)
+    text = re.sub(r'\w*\d\w*', '', text)
 
     stop_words = set(stopwords.words('english'))
     text = ' '.join(word for word in text.split() if word not in stop_words)
