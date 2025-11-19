@@ -13,7 +13,7 @@ import os
 # Download stopwords if not already present
 try:
     stopwords.words('english')
-except nltk.downloader.DownloadError:
+except LookupError:
     nltk.download('stopwords')
 
 # --- Text Preprocessing ---
